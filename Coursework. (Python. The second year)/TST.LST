@@ -1,0 +1,87 @@
+Microsoft (R) Macro Assembler Version 5.00                  4/21/18 16:03:58
+                                                             Page     1-1
+
+
+				.386 
+				 
+ 0000				Data Segment 
+ 0000  FC			    var db 0fch 
+ 0001  0340			    VAR2 dw 0340h 
+ 0003  5C7F0A00			    Var3 dd 0a7f5ch 
+ 0007  17			    var4 db 23 
+ 0008  E9			    var5 db -23 
+ 0009				Data ends 
+				 
+				Assume Cs:Code, Ds:Data 
+				 
+ 0000				Code Segment 
+ 0000  FF 05 00000003 R		    inc Var3 
+ 0006  FF 04B5 00000003 R	    inc ds:Var3 [esi*4] 
+ 000D  FB			    sti 
+ 000E  58			    pop eax 
+ 000F  5C			    pop esp 
+ 0010  FF 04FD 00000000		    inc dword ptr ds:[edi*8] 
+ 0017  FB			    sti 
+ 0018  FE 04B5 00000000		    inc byte ptr ds:[esi*4] 
+ 001F  C7 04F5 00000000 0003D590    mov dword ptr ds:[esi*8], 0f564h*4 
+ 002A  FB			    sti 
+ 002B  67| C6 45 10		    mov byte ptr ds:[di*8], 00001000b*2 
+ 002F  8B 3CF5 00000000		    mov edi, dword ptr ds:[esi*8] 
+ 0036  8B 1CF5 00000000		    mov ebx, dword ptr ds:[esi*8] 
+ 003D  8A 24F5 00000000		    mov ah, byte ptr ds:[esi*8] 
+ 0044  3A E2			    cmp ah, dl 
+ 0046  3A C6			    cmp al, dh 
+ 0048  3B C6			    cmp eax, esi 
+ 004A  3B FB			    cmp edi, ebx 
+ 004C  0F 85 00000087 R		    jnz label2 
+ 0052  3B F7			    cmp esi, edi  
+ 0054  0F 85 00000087 R		    jnz label2 
+ 005A  67| 20 64		    and byte ptr ds:[si*4], dh 
+ 005D  21 0C5D 00000000		    and ds:[ebx*2], ecx 
+ 0064  21 14F5 00000000		    and dword ptr ds:[esi*8], edx 
+ 006B				label1: 
+ 006B  81 F6 0001EAC8		    xor esi, 0f564h*2 
+ 0071  81 F7 0001EAC8		    xor edi, 0f564h*2 
+ 0077  80 F4 10			    xor ah, 00001000b*2 
+ 007A  34 20			    xor al, 00001000b*4 
+ 007C  35 00002000		    xor eax, 00001000h*2 
+ 0081  81 F2 00004000		    xor edx, 00001000h*4
+ 0087				label2: 
+ 0087				Code ends 
+				 
+				End 
+Microsoft (R) Macro Assembler Version 5.00                  4/21/18 16:03:58
+                                                             Symbols-1
+
+
+
+
+                N a m e         	Size	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	32 Bit	0087	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	32 Bit	0009	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+LABEL1 . . . . . . . . . . . . .  	L NEAR	006B	CODE
+LABEL2 . . . . . . . . . . . . .  	L NEAR	0087	CODE
+
+VAR  . . . . . . . . . . . . . .  	L BYTE	0000	DATA
+VAR2 . . . . . . . . . . . . . .  	L WORD	0001	DATA
+VAR3 . . . . . . . . . . . . . .  	L DWORD	0003	DATA
+VAR4 . . . . . . . . . . . . . .  	L BYTE	0007	DATA
+VAR5 . . . . . . . . . . . . . .  	L BYTE	0008	DATA
+
+@FILENAME  . . . . . . . . . . .  	TEXT  tst		
+
+
+     48 Source  Lines
+     48 Total   Lines
+     11 Symbols
+
+  50962 + 465582 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

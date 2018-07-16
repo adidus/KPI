@@ -1,0 +1,70 @@
+0000     Data Segment
+0000         VAR2 dw 0340h
+0002         Var3 dd 0a7f5ch
+0006         var4 db 254
+0007         var5 db -23
+0008     Data ends
+0000     Code Segment
+0000         and dword ptr [eax*4], eax
+0007         and dword ptr cs:[esi*4], eax
+000F         and [esi*4], edi
+0016         inc VAR2
+001D         inc Var3
+0023         inc var4
+0029         inc dword ptr ds: [esi*4]
+0030         inc dword ptr ds: [esi*4]
+0037         inc dword ptr ds: [esi*4]
+003E         inc byte ptr ds: [esi*4]
+0045         inc byte ptr ds: [esi*4]
+004C         inc byte ptr ds: [esi*4]
+0053         mov byte ptr ds:[edi*8], 5+2
+005B         mov edi, dword ptr ds:[esi*8]
+0062         mov ebx, dword ptr ds:[esi*8]
+0069         mov ah, byte ptr ds:[esi*8]
+0070         cmp ah, dl
+0072         and ds:[esi*4], eax
+0079         and dword ptr [eax*4], eax
+0080         and dword ptr cs:[esi*4], eax
+0088         and [esi*4], edi
+008F         sti
+0090         pop eax
+0091         pop edx
+0092         inc dword ptr ds:[edi*8]
+0099         sti
+009A         inc byte ptr ds:[esi*4]
+00A1         mov dword ptr ds:[esi*8], 0f564h*4
+00AC         sti
+00AD     label3:
+00AD         cmp ah, dl
+00AF         cmp al, dh
+00B1         jnz label3
+00B3         cmp eax, esi
+00B5         cmp edi, ebx
+00B7         jnz label9
+00BD         cmp esi, edi 
+00BF         jnz label1
+00C5         and ds:[ebx*2], ecx
+00CC         and dword ptr ds:[esi*8], edx
+00D3         jnz label1
+00D9     label1:
+00D9         jnz label1
+00DB         xor al, -2
+00DD         xor edi, 0f564h*2
+00E3         xor ah, 00001000b*2
+00E6         xor al, 00001000b*4
+00E8         xor eax, 00001000h*2
+00ED         xor edx, 00001000h*4
+00F3     label9:
+00F3     Code ends
+00F3     End
+N a m e        Size	      Length    Align	Combine Class
+DATA......     32 Bit     0008     PARA	   NONE
+CODE......     32 Bit     00F3     PARA	   NONE
+N a m e        Type	   Value	 Attr
+LABEL3....     NEAR     00AD     CODE
+LABEL1....     NEAR     00D9     CODE
+LABEL9....     NEAR     00F3     CODE
+VAR2......     DW       0000     DATA
+VAR3......     DD       0002     DATA
+VAR4......     DB       0006     DATA
+VAR5......     DB       0007     DATA

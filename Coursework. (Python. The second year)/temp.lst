@@ -1,0 +1,76 @@
+0000     Data Segment
+0000         var db 0fch
+0001         VAR2 dw 0340h
+0003         Var3 dd 0a7f5ch
+0007         var4 db 23
+0008         var5 db -23
+0009     Data ends
+0000     Code Segment
+0000         and var, ah
+0006         and ds:var, ah
+000C         and byte ptr ds:var, al
+0012         and dword ptr Var3[eax*4], eax
+0019         and dword ptr cs:var[esi*4], eax
+0021         and Var3[esi*4], edi
+0028         inc VAR2
+002F         inc Var3
+0035         inc var4
+003B         inc ds:Var2 [esi*4]
+0043         inc ds:Var3 [esi*4]
+004A         inc ds:Var4 [esi*4]
+0051         inc dword ptr ds:Var2 [esi*4]
+0058         inc dword ptr ds:Var3 [esi*4]
+005F         inc dword ptr ds:Var4 [esi*4]
+0066         inc byte ptr ds:Var2 [esi*4]
+006D         inc byte ptr ds:Var3 [esi*4]
+0074         inc byte ptr ds:Var4 [esi*4]
+007B         mov byte ptr ds:[edi*8], 00001000b*2
+0083         mov edi, dword ptr ds:[esi*8]
+008A         mov ebx, dword ptr ds:[esi*8]
+0091         mov ah, byte ptr ds:[esi*8]
+0098         mov var, 00001000b*2
+009F         cmp ah, dl
+00A1         and ds:Var3[esi*4], eax
+00A8         and dword ptr Var3[eax*4], eax
+00AF         and dword ptr cs:var[esi*4], eax
+00B7         and Var3[esi*4], edi
+00BE         sti
+00BF         pop eax
+00C0         pop esp
+00C1         inc dword ptr ds:[edi*8]
+00C8         sti
+00C9         inc byte ptr ds:[esi*4]
+00D0         mov dword ptr ds:[esi*8], 0f564h*4
+00DB         sti
+00DC     label1:
+00DC         cmp ah, dl
+00DE         cmp al, dh
+00E0         cmp eax, esi
+00E2         cmp edi, ebx
+00E4         jnz label2
+00EA         cmp esi, edi 
+00EC         jnz label1
+00F4         and ds:[ebx*2], ecx
+00FB         and dword ptr ds:[esi*8], edx
+00102     label1:
+00102         xor esi, 0f564h*2
+00108         xor edi, 0f564h*2
+0010E         xor ah, 00001000b*2
+00111         xor al, 00001000b*4
+00113         xor eax, 00001000h*2
+00118         xor edx, 00001000h*4
+0011E     label9:
+0011E     Code ends
+0011E     End
+N a m e        Size	      Length    Align	Combine Class
+DATA......     32 Bit     0009     PARA	   NONE
+CODE......     32 Bit     0011E     PARA	   NONE
+N a m e        Type	   Value	 Attr
+LABEL1....     NEAR     00DC     CODE
+LABEL1....     NEAR     00102     CODE
+LABEL9....     NEAR     0011E     CODE
+VAR.......     DB       0000     DATA
+VAR2......     DW       0001     DATA
+VAR3......     DD       0003     DATA
+VAR4......     DB       0007     DATA
+VAR5......     DB       0008     DATA
