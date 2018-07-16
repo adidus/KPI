@@ -1,2 +1,2 @@
 # KPI
-My projects, homeworks, laboratory and course works and training exersice from my university.
+Projects, laboratory and course works from my education in university.
