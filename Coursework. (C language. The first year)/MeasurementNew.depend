@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1491742592 source:d:\kpi\methodrab\asd\!_sda-2016\courswork\measurement\measurementnew\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"CommonVector.h"
+	"Measurement.h"
+
+1488626139 d:\kpi\methodrab\asd\!_sda-2016\courswork\measurement\measurementnew\commonvector.h
+
+1491742480 d:\kpi\methodrab\asd\!_sda-2016\courswork\measurement\measurementnew\measurement.h
+	<time.h>
+
+1491742805 source:d:\kpi\methodrab\asd\!_sda-2016\courswork\measurement\measurementnew\measurement.c
+	"Measurement.h"
+	<stdio.h>
+
+1493270355 source:c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\measurement.c
+	"Measurement.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\measurement.h
+	<time.h>
+	<stdio.h>
+	"inouth.h"
+	"CommonVector.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\commonvector.h
+
+1493270470 source:c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\sorting.c
+	"sortingh.h"
+
+1493255057 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\sorting.h
+	<stdlib.h>
+	<stdio.h>
+	"Commonvector.h"
+	<time.h>
+
+1493270355 source:c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menuh.h"
+
+1493257750 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\inout.h
+	<stdio.h>
+	<stdlib.h>
+	"CommonVector.h"
+
+1493257077 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\inout.c
+	<stdio.h>
+	<stdlib.h>
+	"inouth.h"
+
+1493222619 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\menu.c
+	"menu.h"
+
+1492648447 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\menu.h
+	<stdio.h>
+	<stdlib.h>
+
+1493256322 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\sorting.c
+	<stdlib.h>
+	<stdio.h>
+	"sortingh.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\menuh.h
+	<stdio.h>
+	<stdlib.h>
+	"inouth.h"
+	"sortingh.h"
+	"CommonVector.h"
+	"Measurement.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\sortingh.h
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	"Commonvector.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\inouth.h
+	<stdio.h>
+	<stdlib.h>
+	"CommonVector.h"
+
+1493270355 source:c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\inouth.c
+	"inouth.h"
+
+1493258797 source:c:\users\yoga 500\documents\ œ≤\measurementnew\measurementnew\menuh.c
+	<stdio.h>
+	"menuh.h"
+

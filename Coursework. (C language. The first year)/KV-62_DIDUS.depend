@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1493270355 source:c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\inouth.c
+	"inouth.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\inouth.h
+	<stdio.h>
+	<stdlib.h>
+	"CommonVector.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\commonvector.h
+
+1493271689 source:c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menuh.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\menuh.h
+	<stdio.h>
+	<stdlib.h>
+	"inouth.h"
+	"sortingh.h"
+	"CommonVector.h"
+	"Measurement.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\sortingh.h
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	"Commonvector.h"
+
+1493270355 c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\measurement.h
+	<time.h>
+	<stdio.h>
+	"inouth.h"
+	"CommonVector.h"
+
+1493270355 source:c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\measurement.c
+	"Measurement.h"
+
+1493271677 source:c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\menuh.c
+	<stdio.h>
+	"menuh.h"
+
+1493270470 source:c:\users\yoga 500\documents\ œ≤\measurementnew\kv-62_didus\sorting.c
+	"sortingh.h"
+
