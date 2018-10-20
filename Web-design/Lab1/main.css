@@ -1,0 +1,81 @@
+.Head {
+	margin: auto;
+	height: 20%;
+}
+
+a {
+	font-size: 100%;
+}
+
+#Menu {
+	background-color: #5dbc47;
+	float: left;
+	height: 100%;
+	width: 30%;
+	text-align: center;
+	color: white;
+}
+
+#me {
+	text-align: center;
+	font-size: 100%;
+}
+
+#Header {
+	background-color: #5dbc47;
+	float: right;
+	height: 100%;
+	width: 68%;
+	text-align: right;
+	vertical-align: middle;
+	font-size: 180%;
+}
+
+#mpage {
+	margin: 2%;
+	color: white;
+}
+
+
+.Middle {
+	height: 65%;
+}
+
+img.prev {
+	width: 30%;
+	float: right;
+}
+
+.prevtex {
+	font-size: 150%;
+	margin: 2%;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+
+.Bottom {
+
+}
+
+.BottomPart {
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+}
+
+#AddSection {
+	background-color: #bcbc47;
+	height: 10%;
+	width: 49.5%;
+	float: left;
+	margin: auto;
+
+}
+
+#BottomColon {
+	background-color: #bcbc47;
+	height: 10%;
+	width: 49.5%;
+	float: right;
+	margin: auto;
+}
