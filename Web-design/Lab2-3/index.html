@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" placeholder="Your input here" class="styled-input">
+    <table class="data-table">
+    </table>
+</body>
+<script>
+    const input = document.querySelector('.styled-input');
+    const table = document.querySelector('.data-table');
+    const API = 'http://localhost:3200/api?';
+
+    let sendTimeout = null;
+
+    input.addEventListener('input', function (e) {
+        clearTimeout(sendTimeout);
+        sendTimeout = setTimeout(()=>{
+            clearTable();
+            input.value !== '' && get(input.value)
+                .then(buildTable)
+        }, 500)
+    });
+
+
+    input.addEventListener('blur', function (e) {
+        setTimeout(clearTable, 200);
+        input.value !== '' && send(input.value);
+    });
+
+
+    function send(word) {
+        fetch(API + `task=add&word=${word}`);
+    }
+
+    function get(word) {
+        return new Promise(resolve => {
+            fetch(API + `task=get&word=${word}`)
+                .then(res=>res.json())
+                .then(data=>{resolve(data)})
+        })
+    }
+
+    function buildTable(data) {
+        data['words'] && data['words'].forEach(word=>{
+            table.innerHTML += `<tr><td>${word}</td></tr>`
+        });
+        setTimeout(suggestionClick, 0);
+    }
+
+
+    function clearTable() {
+        Array.from(table.querySelectorAll('*')).forEach(e=>{
+            e.remove();
+        });
+    }
+
+    function suggestionClick() {
+        const nodes = document.querySelectorAll('td');
+        Array.from(nodes).forEach(e=>{
+            e.onclick = ()=>{
+                input.value = e.innerText;
+            }
+        });
+    }
+
+</script>
+<style>
+    .styled-input {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid rgba(0,0,0,.1);
+        width: 400px;
+        height: 50px;
+        font-size: 2rem;
+    }
+
+    table {
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+        height: 50px;
+    }
+
+    td {
+        font-size: 2rem;
+        border: 1px solid rgba(0,0,0,.1);
+        border-top: none;
+        width: 400px;
+        cursor: pointer;
+    }
+</style>
+</html>
