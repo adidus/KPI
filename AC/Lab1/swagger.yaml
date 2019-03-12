@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: ''
   version: 1.0.0
-  title: Somo api
+  title: Labaratory work api
 servers:
   - url: http://localhost:5050/api
 paths:
@@ -135,9 +135,9 @@ paths:
                     default: false
 
   /del_measurement:
-    get:
+    delete:
       summary: "Node by id"
-      description: "Get node by id"
+      description: "Delete node by id"
       operationId: api.del_measurement
       parameters:
         - name: measurement_id
@@ -148,7 +148,7 @@ paths:
             type: integer
       responses:
         '202':
-          description: "Success true, node was edit in db"
+          description: "Success true, node was delete in db"
           content:
             '*/*':
               schema:
