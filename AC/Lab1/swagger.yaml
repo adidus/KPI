@@ -1,18 +1,169 @@
-swagger: "2.0"
+openapi: 3.0.0
 info:
-  title: Sample API
-  description: API description in Markdown.
+  description: ''
   version: 1.0.0
-host: api.example.com
-schemes:
-  - https
+  title: Somo api
+servers:
+  - url: http://localhost:5050/api
 paths:
-  /users:
+  /measurements:
     get:
-      summary: Returns a list of users.
-      description: Optional extended description in Markdown.
-      produces:
-        - application/json
+      summary: "All nodes of pressure"
+      description: "Get all pressure' nodes "
+      operationId: api.get_measurements
       responses:
-        200:
-          description: OK
+        '200':
+          description: "All nodes in our system in json"
+          content:
+            '*/*':
+              schema:
+                type: object
+
+  /measurement:
+    get:
+      summary: "Node by id"
+      description: "Get node by id"
+      operationId: api.get_measurement
+      parameters:
+        - name: measurement_id
+          in: query
+          description: "id of node"
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Node by id in json"
+          content:
+            '*/*':
+              schema:
+                type: object
+        '406':
+          description: "Error id"
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: false
+
+  /add_measurement:
+    post:
+      summary: "New node in our base"
+      description: "New node in our base in json"
+      operationId: api.add_measurement
+      parameters:
+        - name: systolic
+          in: query
+          description: "Systolic"
+          required: true
+          schema:
+            type: integer
+        - name: diastolic
+          in: query
+          description: "Diastolic"
+          required: true
+          schema:
+            type: integer
+      responses:
+        '202':
+          description: "Success true, node was post to db"
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: True
+        '406':
+          description: "Success false, parameter's wrong "
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: false
+  /edit_measurement:
+    post:
+      summary: "Edit node in our base"
+      description: "Edit node in our base in json"
+      operationId: api.edit_measurement
+      parameters:
+        - name: measurement_id
+          in: query
+          description: "id of node"
+          required: true
+          schema:
+            type: integer
+        - name: systolic
+          in: query
+          description: "Systolic"
+          required: true
+          schema:
+            type: integer
+        - name: diastolic
+          in: query
+          description: "Diastolic"
+          required: true
+          schema:
+            type: integer
+      responses:
+        '202':
+          description: "Success true, node was edit in db"
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: True
+        '406':
+          description: "Success false, parameter's wrong "
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: false
+
+  /del_measurement:
+    get:
+      summary: "Node by id"
+      description: "Get node by id"
+      operationId: api.del_measurement
+      parameters:
+        - name: measurement_id
+          in: query
+          description: "id of node"
+          required: true
+          schema:
+            type: integer
+      responses:
+        '202':
+          description: "Success true, node was edit in db"
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: True
+        '406':
+          description: "Success false, parameter's wrong "
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  Success:
+                    type: boolean
+                    default: false
