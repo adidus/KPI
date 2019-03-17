@@ -22,3 +22,13 @@ class PythonApi(unittest.TestCase):
             print("Test 'get_measurement()' PASS at " + str(utc))
         else:
             print("Test 'get_measurement()' FAIL at " + str(utc))
+
+    def test_add_measurements(self):
+        utc = arrow.utcnow()
+
+        res = requests.post('http://localhost:5050/api/add_measurement?systolic=200&diastolic=400')
+
+        if res.status_code == 202:
+            print("Test 'add_measurements()' PASS at " + str(utc))
+        else:
+            print("Test 'add_measurements()' FAIL at " + str(utc))
