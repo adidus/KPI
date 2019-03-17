@@ -32,3 +32,25 @@ class PythonApi(unittest.TestCase):
             print("Test 'add_measurements()' PASS at " + str(utc))
         else:
             print("Test 'add_measurements()' FAIL at " + str(utc))
+
+    def test_edit_measurement(self):
+        utc = arrow.utcnow()
+
+        res = requests.put('http://localhost:5050/api/edit_measurement?measurement_id=2&systolic=100&diastolic=200')
+        if res.status_code == 202:
+            print("Test 'edit_measurements()' PASS at " + str(utc))
+        else:
+            print("Test 'edit_measurements()' FAIL at " + str(utc))
+
+    def test_delete_measurement(self):
+        utc = arrow.utcnow()
+
+        res = requests.delete('http://localhost:5050/api/del_measurement?measurement_id=1')
+        if res.status_code == 202:
+            print("Test 'delete_measurements()' PASS at " + str(utc))
+        else:
+            print("Test 'delete_measurements()' FAIL at " + str(utc))
+
+
+if __name__ == "__main__":
+    unittest.main()
