@@ -89,7 +89,7 @@ paths:
                     type: boolean
                     default: false
   /edit_measurement:
-    post:
+    put:
       summary: "Edit node in our base"
       description: "Edit node in our base in json"
       operationId: api.edit_measurement
