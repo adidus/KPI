@@ -5,6 +5,7 @@ from config import *
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')
 
+
 @app.route('/')
 def index():
     return json.dumps({'hello': 'world'})

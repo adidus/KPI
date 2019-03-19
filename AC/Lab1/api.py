@@ -18,6 +18,11 @@ measurements = [
 
 
 def make_public_task(task):
+    """
+    Make pretty print for
+    :param task: for pretty print
+    :return: pretty print task
+    """
     new_task = {}
     for field in task:
         if field == 'id':
@@ -29,11 +34,19 @@ def make_public_task(task):
 
 # @app.route("/api/v0.1/measurements", methods=["GET"])
 def get_measurements():
+    """
+    :return: all measurements
+    """
     return jsonify({"measurements": [i for i in map(make_public_task, measurements)]})
 
 
 # @app.route("/api/v0.1/measurement/<int:id>", methods=["GET"])
 def get_measurement(measurement_id):
+    """
+    get measurement by id
+    :param measurement_id: id for getting this node
+    :return: measurement
+    """
     elem = list(filter(lambda t: t['id'] == measurement_id, measurements))
     if len(elem) == 0:
         return {
@@ -45,6 +58,12 @@ def get_measurement(measurement_id):
 
 # @app.route("/api/v0.1/measurements", methods=["POST"])
 def add_measurement(systolic, diastolic):
+    """
+    Adding new node in our db
+    :param systolic: measurement of systolic
+    :param diastolic: measurement of diastolic
+    :return: code of success
+    """
     if not "diastolic" and not "systolic":
         return {
                    'Success': False,
@@ -65,6 +84,13 @@ def add_measurement(systolic, diastolic):
 
 # @app.route("/api/v0.1/measurement/<int:measurement_id>", methods=["PUT"])
 def edit_measurement(measurement_id, systolic, diastolic):
+    """
+    Method for editing measurement by id
+    :param measurement_id: id for editing
+    :param systolic: new measurement
+    :param diastolic: new measurement
+    :return: code of success
+    """
     elem = list(filter(lambda t: t['id'] == measurement_id, measurements))
     if len(elem) == 0:
         return {
@@ -83,6 +109,11 @@ def edit_measurement(measurement_id, systolic, diastolic):
 
 # @app.route("/api/v0.1/measurement/<int:measurement_id>", methods=["DELETE"])
 def del_measurement(measurement_id):
+    """
+    delete measurement by id
+    :param measurement_id: id for deleting
+    :return: code of success
+    """
     elem = list(filter(lambda t: t['id'] == measurement_id, measurements))
     if len(elem) == 0:
         return {
@@ -93,7 +124,3 @@ def del_measurement(measurement_id):
     return {
                'Success': True
            }, 202
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
