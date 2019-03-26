@@ -11,3 +11,4 @@ BEGIN
 3
 4
 END;
+ok
