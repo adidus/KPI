@@ -15,8 +15,8 @@ class Lexeme:
 
 class Symbol:
     def __init__(self, val='', attr=0):
-        self.val = val;
-        self.attr = attr;
+        self.val = val
+        self.attr = attr
         self.line = 1
         self.col = 0
 
@@ -95,13 +95,14 @@ def number(symbol, file):
     buf = ''
     skiping = False
     while symbol.val and (symbol.attr == 1 or symbol.attr == 2):
-        if (symbol.attr != 2):
+        if symbol.attr != 2:
             err_idn = True
         buf += symbol.val
         symbol.read(file)
     if err_idn:
         token.err_stack.append(token.errors['lexical']['invalid_ident'].format(line, col, buf))
         return {'skip': True}
+    # const exist in code
     elif buf in token.consts:
         code = token.consts[buf]
     elif token.consts:
