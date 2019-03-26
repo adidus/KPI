@@ -1,0 +1,13 @@
+PROCEDURE TEST1;
+(*******0c1 = 44;
+c2 = 100;
+(* blablabla *)
+DEFFUNC
+BEGIN
+333
+333
+3331
+1
+3
+4
+END;
