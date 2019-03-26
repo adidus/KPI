@@ -2,7 +2,7 @@ import token
 import sys
 from vocabulary import scan
 
-scan('test.sig')
+scan('test2.sig')
 
 print(' line  col   code  value')
 print('-----------------------------')

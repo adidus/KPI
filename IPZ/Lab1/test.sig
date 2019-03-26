@@ -1,7 +1,7 @@
 PROCEDURE TEST1;
-(*******0c1 = 44;
+(*0c1 = 44;
 c2 = 100;
-(* blablabla *)
+*)
 DEFFUNC
 BEGIN
 333
