@@ -6,7 +6,13 @@ attributes = []
 
 
 class Lexeme:
-    def __init__(self, code, line, col, value):
+    def __init__(self, code: int, line: int, col: int, value: str):
+        """
+        :param code: code after analysing
+        :param line: coordinate of line
+        :param col: coordinate of column
+        :param value: the value of lexeme
+        """
         self.value = value
         self.code = code
         self.line = line
@@ -151,6 +157,9 @@ lexeme_type = {
 
 
 def scan(fname: str):
+    """
+    :param fname: name of file for analysing
+    """
     fill_attributes(attributes)
 
     try:

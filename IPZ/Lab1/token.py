@@ -13,7 +13,6 @@ identifires = {}
 
 # Table of consts
 consts = {
-
 }
 
 # Table of lexemes
