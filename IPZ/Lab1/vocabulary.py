@@ -1,4 +1,3 @@
-import sys
 import token
 
 # Array of ASCII character attributes
@@ -31,7 +30,7 @@ class Symbol:
         return self.val
 
 
-def fill_attributes(attr):
+def fill_attributes(attr: list):
     # 5 - illegals characters
     attr += [5 for x in range(128)]
 
@@ -168,7 +167,7 @@ lexeme_type = {
 }
 
 
-def scan(fname):
+def scan(fname: str):
     fill_attributes(attributes)
 
     try:
