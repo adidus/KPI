@@ -1,4 +1,5 @@
 import token
+from symbol import Symbol
 
 # Array of ASCII character attributes
 attributes = []
@@ -10,24 +11,6 @@ class Lexeme:
         self.code = code
         self.line = line
         self.col = col
-
-
-class Symbol:
-    def __init__(self, val='', attr=0):
-        self.val = val
-        self.attr = attr
-        self.line = 1
-        self.col = 0
-
-    def read(self, file):
-        self.val = file.read(1).upper()
-        if self.val:
-            self.attr = attributes[ord(self.val)]
-            self.col += 1
-            if self.val == '\n':
-                self.col = 0
-                self.line += 1
-        return self.val
 
 
 def fill_attributes(attr: list):
@@ -175,7 +158,7 @@ def scan(fname: str):
     except OSError:
         print('Couldn`t open this file')
     else:
-        symbol = Symbol()
+        symbol = Symbol(attributes)
         symbol.read(f)
         while symbol.val:
             lex = lexeme_type[symbol.attr](symbol, f)
