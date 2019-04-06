@@ -1,12 +1,11 @@
 # Table of delimiters
-# delims = {
-#     # ';': 59,
-#     # '=': 61,
-#     # '\\': 92,
-#     # ',': 44,
-#     # '.': 46
-#
-# }
+delims = {
+    ';': 59,
+    '=': 61,
+    '\\': 92,
+    ',': 44,
+    '.': 46
+}
 
 # Table of identifires
 identifires = {}
@@ -26,12 +25,13 @@ keywords = {
     'END': 404
 }
 
+	
 errors = {
     'lexical': {
         'invalid_ident': "Lexer: Error (line: {}, column: {}): invalid identifier '{}'",
         'invalid_char': "Lexer: Error (line: {}, column: {}): invalid character '{}'",
-        'unclosed_comment': "Lexer: Warning (line: {}, column: {}): *) expected, but end of file found",
-    },
+        'unclosed_comment': "Lexer: Warning (line: {}, column: {}): *) expected, but end of file found"
+    }
 }
 
 err_stack = []
