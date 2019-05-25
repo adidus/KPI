@@ -160,7 +160,7 @@ def statement_list(i):
         tree.add('empty')
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-2)
+        err(-2, lexem.line, lexem.col)
     tree.current_element = tree.current_element.parent_element
     # i+=1
     return i
