@@ -1,8 +1,8 @@
+from token import *
 from vocabulary import *
 from tree import *
-from token import *
 
-error_table = {"Wrong delimiter": -1, "Wrong key_word": -2, "No such identifier": -3, "Wrong integer": -4}
+error_table = {"Wrong delimiter": -1, "Wrong keyword": -2, "No such identifier": -3, "Wrong integer": -4}
 
 lex_list = lexemes
 tree = Tree()
@@ -14,11 +14,14 @@ def scan(dictionary, value):
             return key
 
 
-def err(err_number):  # TODO line and col
+def err(err_number, line, col):
     tree.add(err_number)
     tree.current_element = tree.current_element.parent_element
+    print('\n\nSYNTAX ANALYZER\n')
     tree.print_tree()
-    print(scan(error_table, err_number))
+    print('ERROR traceback:')
+    print(scan(error_table, err_number) + ' on line - ' + str(line) + ' and column - ' + str(col))
+    print(tree.listing())
     quit()
 
 
@@ -36,7 +39,7 @@ def unsignedInteger(i):
         tree.add(scan(consts, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-3)
+        err(-3, lexem.line, lexem.col)
     tree.current_element = tree.current_element.parent_element
 
 
@@ -56,8 +59,8 @@ def functionCharasteristic(i):
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
-    print(lexem.code)
+        err(-1, lexem.line, lexem.col)
+    # print(lexem.code)
     unsignedInteger(i + 1)
 
     i += 2
@@ -67,7 +70,7 @@ def functionCharasteristic(i):
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
     unsignedInteger(i + 1)
     tree.current_element = tree.current_element.parent_element
@@ -84,7 +87,7 @@ def function(i):
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
     i = constant(i + 1)
     i = functionCharasteristic(i)
@@ -95,7 +98,7 @@ def function(i):
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
     i += 1
     tree.current_element = tree.current_element.parent_element
@@ -115,6 +118,7 @@ def functionList(i):
             i = functionList(i)
             tree.current_element = tree.current_element.parent_element
 
+
     return i
 
 
@@ -131,7 +135,9 @@ def mathFunctionDeclarations(i):
             tree.add('empty')
             tree.current_element = tree.current_element.parent_element
         else:
-            err(-2)
+            err(-2, lexem.line, lexem.col)
+
+            
         tree.current_element = tree.current_element.parent_element
     tree.current_element = tree.current_element.parent_element
 
@@ -171,7 +177,8 @@ def block(i):
         tree.add(scan(keywords, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-2)
+        
+        err(-2, lexem.line, lexem.col)
     i += 1
     i = statement_list(i)
     lexem = lex_list[i]
@@ -179,7 +186,8 @@ def block(i):
         tree.add(scan(keywords, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-2)
+        
+        err(-2, lexem.line, lexem.col)
     tree.current_element = tree.current_element.parent_element
     return i;
 
@@ -191,7 +199,7 @@ def identifier(lexem):
         tree.add(scan(identifires, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-3)
+        err(-3, lexem.line, lexem.col)
     tree.current_element = tree.current_element.parent_element
     tree.current_element = tree.current_element.parent_element
 
@@ -209,7 +217,7 @@ def program():
         tree.add(scan(keywords, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
     i += 1
     lexem = lex_list[i]
@@ -222,7 +230,7 @@ def program():
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
     i += 1
     i = block(i)
@@ -233,7 +241,7 @@ def program():
         tree.add(scan(delims, lexem.code))
         tree.current_element = tree.current_element.parent_element
     else:
-        err(-1)
+        err(-1, lexem.line, lexem.col)
 
 
 def signal_program():
