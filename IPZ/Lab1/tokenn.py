@@ -19,7 +19,7 @@ lexemes = []
 
 # Table of keywords
 keywords = {
-    'PROCEDURE': 401,
+    'PROGRAM': 401,
     'DEFFUNC': 402,
     'BEGIN': 403,
     'END': 404

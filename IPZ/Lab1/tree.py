@@ -44,15 +44,3 @@ class Tree:
                 print(root.val, end=" ")
         for leave in root.leaves:
             self._listing(leave)
-
-#if __name__ == '__main__':
-#    tree = Tree()
-#    tree.add('program')
-#    tree.add('PROGRAM')
-    #tree.current_element = tree.current_element.parent_element
-#   tree.add('identifier')
-#    tree.add('MONOGRAM')
-    #tree.current_element = tree.current_element.parent_element
-    #tree.current_element = tree.current_element.parent_element
-#    tree.add(';')
-#    tree.print_tree()

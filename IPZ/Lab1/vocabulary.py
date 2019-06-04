@@ -1,4 +1,4 @@
-import token
+import tokenn
 from symbol import Symbol
 
 # Array of ASCII character attributes
@@ -62,16 +62,16 @@ def ident(symbol, file):
         buf += symbol.val
         symbol.read(file)
 
-    if buf in token.keywords:
-        code = token.keywords[buf]
-    elif buf in token.identifires:
-        code = token.identifires[buf]
-    elif token.identifires:
-        code = max(token.identifires.values()) + 1
-        token.identifires[buf] = code
+    if buf in tokenn.keywords:
+        code = tokenn.keywords[buf]
+    elif buf in tokenn.identifires:
+        code = tokenn.identifires[buf]
+    elif tokenn.identifires:
+        code = max(tokenn.identifires.values()) + 1
+        tokenn.identifires[buf] = code
     else:
         code = 1001
-        token.identifires[buf] = code
+        tokenn.identifires[buf] = code
 
     return {'code': code, 'line': line, 'col': col, 'val': buf, 'skip': False}
 
@@ -88,17 +88,17 @@ def number(symbol, file):
         buf += symbol.val
         symbol.read(file)
     if err_idn:
-        token.err_stack.append(token.errors['lexical']['invalid_ident'].format(line, col, buf))
+        tokenn.err_stack.append(tokenn.errors['lexical']['invalid_ident'].format(line, col, buf))
         return {'skip': True}
     # const exist in code
-    elif buf in token.consts:
-        code = token.consts[buf]
-    elif token.consts:
-        code = max(token.consts.values()) + 1
-        token.consts[buf] = code
+    elif buf in tokenn.consts:
+        code = tokenn.consts[buf]
+    elif tokenn.consts:
+        code = max(tokenn.consts.values()) + 1
+        tokenn.consts[buf] = code
     else:
         code = 501
-        token.consts[buf] = code
+        tokenn.consts[buf] = code
 
     return {'code': code, 'line': line, 'col': col, 'val': buf, 'skip': skiping}
 
@@ -124,13 +124,13 @@ def comment(symbol, file):
     else:
         symbol.read(file)
         if symbol.val == '':
-            token.err_stack.append(token.errors['lexical']['unclosed_comment'].format(line, col))
+            tokenn.err_stack.append(tokenn.errors['lexical']['unclosed_comment'].format(line, col))
         else:
             while True:
                 while symbol.val and symbol.val != '*':
                     symbol.read(file)
                 if symbol.val == '':
-                    token.err_stack.append(token.errors['lexical']['unclosed_comment'].format(line, col))
+                    tokenn.err_stack.append(tokenn.errors['lexical']['unclosed_comment'].format(line, col))
                     break
                 else:
                     symbol.read(file)
@@ -141,7 +141,7 @@ def comment(symbol, file):
 
 
 def illegal(symbol, file):
-    token.err_stack.append(token.errors['lexical']['invalid_char'].format(symbol.line, symbol.col, symbol.val))
+    tokenn.err_stack.append(tokenn.errors['lexical']['invalid_char'].format(symbol.line, symbol.col, symbol.val))
     symbol.read(file)
     return {'skip': True}
 
@@ -173,5 +173,5 @@ def scan(fname: str):
             lex = lexeme_type[symbol.attr](symbol, f)
             print(lex)
             if not lex['skip']:
-                token.lexemes.append(Lexeme(lex['code'], lex['line'], lex['col'], lex['val']))
+                tokenn.lexemes.append(Lexeme(lex['code'], lex['line'], lex['col'], lex['val']))
         f.close()

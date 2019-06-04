@@ -1,4 +1,4 @@
-from token import *
+from tokenn import *
 from vocabulary import *
 from tree import *
 
@@ -210,7 +210,7 @@ def procedureIdentifier(lexem):
 
 
 def program():
-    tree.add('PROCEDURE')
+    # tree.add('PROGRAM')
     i = 0
     lexem = lex_list[i]
     if lexem.code == 401:
