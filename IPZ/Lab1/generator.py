@@ -16,8 +16,6 @@ def kompile(tree):
         if ident in proc_identifier:
             wrong_identifier.append(ident)
         proc_identifier.append(tree.root.leaves[0].leaves[0].leaves[0].val)
-    print(tree.root.leaves[3].val)
-    # print(len(tree.root.leaves[1].leaves[1].val))
     if tree.root.leaves[0].val == "PROGRAM":
         proc_identifier.append(tree.root.leaves[1].leaves[0].leaves[0].val)
     print("\n\n====================CODE=========================")
@@ -34,7 +32,7 @@ def generator(node):
     if node.val == "PROGRAM":
         tmp = "; "
         tmp += proc_identifier[count_proc_identifier]
-        tmp += "\nData segment\n"
+        tmp += "\nData segment"
         f.write(tmp)
         print(tmp)
 
@@ -53,7 +51,7 @@ def generator(node):
         count_var_identifier += 1
 
     elif node.val == "END":
-        tmp = ""
+        tmp = "\n"
         for var_ident in var_identifiers:
             tmp += "\t{} dd 1024 dup (?)\n".format(var_ident['name'])
         tmp += "Data ends\n\n"
@@ -63,6 +61,8 @@ def generator(node):
         tmp_code = ""
         i = 0
         for var_ident in var_identifiers:
+            tmp_code += "; {} = {}\\{},{}\n".format(var_ident['name'], var_ident['var'],
+                                                    var_ident['begin'], var_ident['end'])
             tmp_code += "\tmov cx, {}\n".format(var_ident['end'])
             tmp_code += "\tmov si, {}\n".format(var_ident['begin'])
             tmp_code += "go{}:\n".format(i)
@@ -72,7 +72,7 @@ def generator(node):
             tmp_code += "loop go{}\n\n".format(i)
             i += 1
         tmp += tmp_code
-        tmp += "\n\tmov ax, 4c00h\n\tint 21h\ncode ENDS\nEND Start"
+        tmp += "\n\tmov ax, 4c00h\n\tint 21h\ncode ends\nEND Start"
         print(tmp)
         f.write(tmp)
         f.close()
