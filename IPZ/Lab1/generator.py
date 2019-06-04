@@ -9,26 +9,21 @@ count_var_identifier = 0
 
 
 def kompile(tree):
-    f = open("test.asm", "w")
-    f.close()
-    if tree.root.leaves[0].val == "procedure-identifier":
-        ident = tree.root.leaves[0].leaves[0].leaves[0].val
-        if ident in proc_identifier:
-            wrong_identifier.append(ident)
-        proc_identifier.append(tree.root.leaves[0].leaves[0].leaves[0].val)
     if tree.root.leaves[0].val == "PROGRAM":
         proc_identifier.append(tree.root.leaves[1].leaves[0].leaves[0].val)
+    f = open(proc_identifier[0] + ".asm", "w")
+    f.close()
     print("\n\n====================CODE=========================")
     generator(tree.root)
 
 
 def generator(node):
-    f = open("test.asm", "a")
     global proc_identifier
     global var_identifier
     global count_proc_identifier
     global count_var_identifier
     global key
+    f = open(proc_identifier[0] + ".asm", "a")
     if node.val == "PROGRAM":
         tmp = "; "
         tmp += proc_identifier[count_proc_identifier]
