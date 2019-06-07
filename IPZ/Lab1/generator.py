@@ -36,14 +36,27 @@ def generator(node):
                           'var': node.leaves[2].leaves[0].leaves[0].val,
                           'begin': node.leaves[3].leaves[1].leaves[0].val,
                           'end': node.leaves[3].leaves[3].leaves[0].val}
-        for var in var_identifiers:
-            if var['name'] == var_identifier['name']:
-                tmp = "\nArray {} is already exist.".format(var_identifier['name'])
+
+        if int(var_identifier['begin']) <= int(var_identifier['end']) < 1024:
+            if -2147483648 < int(var_identifier['var']) < 2147483647:
+                for var in var_identifiers:
+                    if var['name'] == var_identifier['name']:
+                        tmp = "\nArray {} is already exist.".format(var_identifier['name'])
+                        f.write(tmp)
+                        f.close()
+                        quit()
+                var_identifiers.append(var_identifier)
+                count_var_identifier += 1
+            else:
+                tmp = "\nSize of {} step more than INT".format(var_identifier['name'])
                 f.write(tmp)
                 f.close()
                 quit()
-        var_identifiers.append(var_identifier)
-        count_var_identifier += 1
+        else:
+            tmp = "\nCheck bounds in {}".format(var_identifier['name'])
+            f.write(tmp)
+            f.close()
+            quit()
 
     elif node.val == "END":
         tmp = "\n"
