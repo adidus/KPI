@@ -221,7 +221,7 @@ def program():
 
     i += 1
     lexem = lex_list[i]
-    procedureIdentifier(lexem);
+    procedureIdentifier(lexem)
 
     i += 1
     lexem = lex_list[i]
@@ -258,7 +258,7 @@ def signal_program():
         print(error_table)
         print()
         tree.listing()
-    return tree
+    return tree, lex_list
 
 # if __name__ == '__main__':
 #     print(lex_list)

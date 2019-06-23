@@ -17,8 +17,8 @@ def main():
 
     # print('\nConstants: {}'.format(token.consts))
     # print('Identifires: {}'.format(token.identifires))
-    tree = signal_program()
-    kompile(tree)
+    tree, lex_list = signal_program()
+    kompile(tree, lex_list)
 
 
 if __name__ == '__main__':
